@@ -1,8 +1,30 @@
+"use client";
+import { count } from "console";
 import Image from "next/image";
-import { LineChart, Line } from "recharts";
+import {
+  LineChart,
+  Line,
+  ResponsiveContainer,
+  RadialBarChart,
+  RadialBar,
+  Legend,
+} from "recharts";
 const data = [
-  { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Page B", uv: 400, pv: 2400, amt: 2400 },
+  {
+    name: "Total",
+    count: 106,
+    fill: "white",
+  },
+  {
+    name: "Girls",
+    count: 70,
+    fill: "#FAE27C",
+  },
+  {
+    name: "Boys",
+    count: 50,
+    fill: "#C3EBFA",
+  },
 ];
 
 const CountChart = () => {
@@ -11,13 +33,33 @@ const CountChart = () => {
       {/* TITLE */}
       <div className="flex justify-between items-center">
         <h1 className="text-lg font-semibold">Student</h1>
-        <Image src={"/more.png"} alt="" width={20} height={20} />
+        <Image src={"/moreDark.png"} alt="" width={20} height={20} />
       </div>
       {/* CHART */}
-      <div className="">
-        <LineChart width={400} height={400} data={data}>
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-        </LineChart>
+      <div className="relative w-full h-[75%]">
+        <ResponsiveContainer>
+          <RadialBarChart
+            cx="50%"
+            cy="50%"
+            innerRadius="10%"
+            outerRadius="100%"
+            barSize={32}
+            data={data}
+          >
+            <RadialBar
+              label={{ position: "insideStart", fill: "#fff" }}
+              background
+              dataKey="count"
+            />
+          </RadialBarChart>
+        </ResponsiveContainer>
+        <Image
+          src={"/maleFemale.png"}
+          alt="logo"
+          width={32}
+          height={32}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
       {/* BOTTOM */}
       <div className="flex justify-center gap-16">
