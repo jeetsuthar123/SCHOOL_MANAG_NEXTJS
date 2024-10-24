@@ -4,8 +4,6 @@ import BigCalendar from "@/app/components/BigCalender";
 import CountChart from "@/app/components/CountChart";
 import EventCalender from "@/app/components/EventCalender";
 
-import "react-big-calendar/lib/css/react-big-calendar.css";
-
 const StudentPage = () => {
   return (
     <div className="flex flex-col gap-4 p-4 md:flex-row">
