@@ -1,3 +1,4 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
@@ -51,9 +52,10 @@ const parentListPage = () => {
               <Image src={"/view.png"} alt="" width={16} height={16} />
             </button>
             {role === "admin" && (
-              <button className="w-7 h-7 flex items-center justify-center rounded-full bg-appPurple">
-                <Image src={"/delete.png"} alt="" width={16} height={16} />
-              </button>
+              // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-appPurple">
+              //   <Image src={"/delete.png"} alt="" width={16} height={16} />
+              // </button>
+              <FormModal table="parent" type="delete" id={item.id} />
             )}
           </Link>
         </div>
@@ -74,9 +76,10 @@ const parentListPage = () => {
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-appYellow ">
               <Image src={"/sort.png"} alt="" width={20} height={20} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-appYellow ">
+            {/* <button className="w-8 h-8 flex items-center justify-center rounded-full bg-appYellow ">
               <Image src={"/plus.png"} alt="" width={20} height={20} />
-            </button>
+            </button> */}
+            <FormModal table="parent" type="create" />
           </div>
         </div>
       </div>
