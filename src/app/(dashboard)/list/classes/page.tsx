@@ -45,21 +45,18 @@ const classesListPage = () => {
       <td className="hidden md:table-cell">{item.grade}</td>
       <td className="hidden md:table-cell">{item.supervisor}</td>
       <td>
-        <div>
-          <Link
-            href={`/list/classes/${item.id}`}
-            className="flex items-center gap-2 "
-          >
+        <div className="flex items-center gap-2 ">
+          <Link href={`/list/classes/${item.id}`}>
             <button className="w-7 h-7 flex items-center justify-center rounded-full bg-appSky">
               <Image src={"/view.png"} alt="" width={16} height={16} />
             </button>
-            {role === "admin" && (
-              // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-appPurple">
-              //   <Image src={"/delete.png"} alt="" width={16} height={16} />
-              // </button>
-              <FormModal table="class" type="delete" id={item.id} />
-            )}
           </Link>
+          {role === "admin" && (
+            // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-appPurple">
+            //   <Image src={"/delete.png"} alt="" width={16} height={16} />
+            // </button>
+            <FormModal table="class" type="delete" id={item.id} />
+          )}
         </div>
       </td>
     </tr>

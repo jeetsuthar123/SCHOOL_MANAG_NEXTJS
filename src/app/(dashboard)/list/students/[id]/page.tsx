@@ -1,5 +1,6 @@
 import Announcement from "@/app/components/Announcement";
 import BigCalendar from "@/app/components/BigCalender";
+import FormModal from "@/app/components/FormModal";
 import Performance from "@/app/components/Performance";
 import { role } from "@/lib/data";
 import Image from "next/image";
@@ -26,6 +27,24 @@ const SingleStudentPage = () => {
             <div className="w-2/3 flex flex-col justify-between gap-4">
               <div className="flex items-center gap-4">
                 <h1 className="text-xl font-semibold">Pinnu Jangid</h1>
+                <FormModal
+                  table="student"
+                  type="update"
+                  data={{
+                    id: 1,
+                    username: "jitendra",
+                    email: "john@doe.com",
+                    password: "password",
+                    firstName: "jitendra",
+                    lastName: "suthar",
+                    phone: "2224569890",
+                    address: "222 Main St, Anytown, USA",
+                    bloodType: "A+",
+                    birthday: "2000-10-01",
+                    sex: "male",
+                    img: "https://images.pexels.com/photos/2888240/pexels-photo-2888240.jpeg?auto=compress&cs=tinysrgb&w=2100",
+                  }}
+                />
               </div>
               <p className="text-sm text-gray-500">This is Student Profile</p>
               <div className="flex items-center justify-between gap-2 flex-wrap text-xs font-medium">
