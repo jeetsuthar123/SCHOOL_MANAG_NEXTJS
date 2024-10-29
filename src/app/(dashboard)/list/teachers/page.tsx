@@ -79,6 +79,7 @@ const TeacherListPage = async () => {
       subjects: true,
       classes: true,
     },
+    take: 10,
   });
 
   return (
