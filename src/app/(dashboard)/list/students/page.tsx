@@ -37,7 +37,7 @@ const renderRow = (item: StudentList) => (
   >
     <td className="flex items-center gap-4 p-4">
       <Image
-        src={item.img || "/noAvatar.png"}
+        src={item.img || "/avatar.png"}
         alt=""
         width={40}
         height={40}
@@ -45,7 +45,7 @@ const renderRow = (item: StudentList) => (
       />
       <div className="flex flex-col">
         <h3 className="font-semibold">{item.name}</h3>
-        <p className="text-xs text-gray-500">{item?.class?.name}</p>
+        <p className="text-xs text-gray-500">{item?.class?.name[0]}</p>
       </div>
     </td>
     <td className="hidden md:table-cell">{item.name}</td>

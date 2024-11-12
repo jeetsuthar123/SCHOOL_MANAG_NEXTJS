@@ -36,7 +36,7 @@ const renderRow = (item: TeacherList) => (
   >
     <td className="flex items-center gap-4 p-4">
       <Image
-        src={item.img || "/noAvatar.png"}
+        src={item.img || "/avatar.png"}
         alt=""
         width={40}
         height={40}
