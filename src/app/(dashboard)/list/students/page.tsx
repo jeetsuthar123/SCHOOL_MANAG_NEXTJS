@@ -5,7 +5,14 @@ import TableSearch from "@/app/components/TableSearch";
 import { role, studentsData } from "@/lib/data";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
-import { Attendance, Class, Grade, Parent, Student } from "@prisma/client";
+import {
+  Attendance,
+  Class,
+  Grade,
+  Parent,
+  Prisma,
+  Student,
+} from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -76,17 +83,41 @@ const StudentListPage = async ({
   searchParams: { [key: string]: string | undefined };
 }) => {
   const { page, ...queryParams } = searchParams;
+
   const p = page ? parseInt(page) : 1;
+
+  // URL PARAMS CONDITION
+  const query: Prisma.StudentWhereInput = {};
+
+  if (queryParams) {
+    for (const [key, value] of Object.entries(queryParams)) {
+      if (value !== undefined) {
+        switch (key) {
+          case "teacherId":
+            query.class = {
+              lessons: {
+                some: {
+                  teacherId: value,
+                },
+              },
+            };
+            break;
+          case "search":
+            query.name = { contains: value, mode: "insensitive" };
+        }
+      }
+    }
+  }
   const [data, count] = await prisma?.$transaction([
     prisma.student.findMany({
+      where: query,
       include: {
-        parent: true,
         class: true,
       },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
-    prisma.teacher.count(),
+    prisma.student.count({ where: query }),
   ]);
 
   console.log("data........", data);
